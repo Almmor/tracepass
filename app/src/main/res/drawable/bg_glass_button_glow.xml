@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 发光按钮背景 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 外发光 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#2000d4ff" />
+            <size
+                android:width="56dp"
+                android:height="56dp" />
+        </shape>
+    </item>
+    <!-- 玻璃主体 -->
+    <item
+        android:left="2dp"
+        android:top="2dp"
+        android:right="2dp"
+        android:bottom="2dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="50%"
+                android:centerX="0.3"
+                android:centerY="0.3"
+                android:startColor="#40FFFFFF"
+                android:endColor="#20FFFFFF" />
+            <stroke
+                android:width="1.5dp"
+                android:color="#60FFFFFF" />
+        </shape>
+    </item>
+</layer-list>

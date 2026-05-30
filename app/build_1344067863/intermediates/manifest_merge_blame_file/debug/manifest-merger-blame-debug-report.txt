@@ -1,0 +1,90 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.almmor.tracepass"
+4    android:versionCode="100"
+5    android:versionName="1.0.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+9        android:targetSdkVersion="33" />
+10
+11    <uses-permission android:name="android.permission.NFC" />
+11-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:6:5-62
+11-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:6:22-59
+12
+13    <uses-feature
+13-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:8:5-10:35
+14        android:name="android.hardware.nfc"
+14-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:9:9-44
+15        android:required="true" />
+15-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:10:9-32
+16
+17    <application
+17-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:12:5-44:19
+18        android:name="com.almmor.tracepass.ThisApplication"
+18-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:13:9-40
+19        android:allowBackup="false"
+19-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:14:9-36
+20        android:debuggable="true"
+21        android:extractNativeLibs="true"
+22        android:hardwareAccelerated="true"
+22-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:15:9-43
+23        android:icon="@drawable/nfcard"
+23-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:16:9-40
+24        android:label="@string/app_name"
+24-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:17:9-41
+25        android:theme="@style/AppTheme" >
+25-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:18:9-40
+26        <meta-data
+26-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:19:9-21:36
+27            android:name="android.nfc.disable_beam_default"
+27-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:20:13-60
+28            android:value="true" />
+28-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:21:13-33
+29
+30        <activity
+30-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:23:9-43:20
+31            android:name="com.almmor.tracepass.MainActivity"
+31-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:24:13-41
+32            android:alwaysRetainTaskState="false"
+32-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:25:13-50
+33            android:configChanges="orientation|screenSize|smallestScreenSize|screenLayout"
+33-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:26:13-91
+34            android:exported="true"
+34-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:30:13-36
+35            android:label="@string/app_name"
+35-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:27:13-45
+36            android:launchMode="singleTask"
+36-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:28:13-44
+37            android:windowSoftInputMode="adjustUnspecified|stateAlwaysHidden" >
+37-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:29:13-78
+38            <intent-filter>
+38-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:31:13-34:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:32:17-69
+39-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:32:25-66
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:33:17-77
+41-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:33:27-74
+42            </intent-filter>
+43            <intent-filter>
+43-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:35:13-38:29
+44                <action android:name="android.nfc.action.TECH_DISCOVERED" />
+44-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:36:17-77
+44-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:36:25-74
+45                <action android:name="android.nfc.action.TAG_DISCOVERED" />
+45-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:37:17-76
+45-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:37:25-73
+46            </intent-filter>
+47
+48            <meta-data
+48-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:40:13-42:59
+49                android:name="android.nfc.action.TECH_DISCOVERED"
+49-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:41:17-66
+50                android:resource="@xml/nfc_tech_filter" />
+50-->C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\AndroidManifest.xml:42:17-56
+51        </activity>
+52    </application>
+53
+54</manifest>

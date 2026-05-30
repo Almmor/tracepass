@@ -1,0 +1,4 @@
+com.almmor.tracepass.test.app-androidTest-0 C:\Users\almmo\Desktop\nfc\nfcard\app\build\generated\res\resValues\androidTest\debug
+com.almmor.tracepass.test.app-mergeDebugAndroidTestResources-1 C:\Users\almmo\Desktop\nfc\nfcard\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
+com.almmor.tracepass.test.app-mergeDebugAndroidTestResources-2 C:\Users\almmo\Desktop\nfc\nfcard\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
+com.almmor.tracepass.test.app-merged_res-3 C:\Users\almmo\Desktop\nfc\nfcard\app\build\intermediates\merged_res\debugAndroidTest

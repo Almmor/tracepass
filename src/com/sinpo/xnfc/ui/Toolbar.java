@@ -16,11 +16,11 @@ Additional permission under GNU GPL version 3 section 7 */
 package com.sinpo.xnfc.ui;
 
 import android.animation.LayoutTransition;
-import android.annotation.SuppressLint;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.text.ClipboardManager;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,20 +32,18 @@ import com.sinpo.xnfc.ThisApplication;
 public final class Toolbar {
 	final ViewGroup toolbar;
 
-	@SuppressLint("NewApi")
 	public Toolbar(ViewGroup toolbar) {
-
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
-			toolbar.setLayoutTransition(new LayoutTransition());
-
+		toolbar.setLayoutTransition(new LayoutTransition());
 		this.toolbar = toolbar;
 	}
 
 	public void copyPageContent(TextView textArea) {
 		final CharSequence text = textArea.getText();
 		if (!TextUtils.isEmpty(text)) {
-			((ClipboardManager) textArea.getContext().getSystemService(
-					Context.CLIPBOARD_SERVICE)).setText(text.toString());
+			ClipboardManager clipboard = (ClipboardManager) textArea.getContext().getSystemService(
+					Context.CLIPBOARD_SERVICE);
+			ClipData clip = ClipData.newPlainText("card info", text.toString());
+			clipboard.setPrimaryClip(clip);
 
 			ThisApplication.showMessage(R.string.info_main_copied);
 		}

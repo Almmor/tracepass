@@ -24,7 +24,10 @@ import com.sinpo.xnfc.nfc.bean.Application;
 import com.sinpo.xnfc.nfc.bean.Card;
 import com.sinpo.xnfc.nfc.tech.Iso7816;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
 final class BeijingMunicipal extends StandardPboc {
+	private static final String TAG = "BeijingMunicipal";
 
 	@Override
 	protected SPEC.APP getApplicationId() {
@@ -38,9 +41,18 @@ final class BeijingMunicipal extends StandardPboc {
 		Iso7816.Response INFO, CNT, BALANCE;
 
 		/*--------------------------------------------------------------*/
-		// read card info file, binary (4)
+		// 首先选择主应用 (北京一卡通ID: 0x1001)
+		/*--------------------------------------------------------------*/
+		boolean selectOk = tag.selectByID(DFI_EP).isOkey();
+		Log.d(TAG, "Select DFI_EP: " + selectOk);
+		if (!selectOk)
+			return HINT.GONEXT;
+
+		/*--------------------------------------------------------------*/
+		// read card info file, binary (4) - 在选择主应用后读取
 		/*--------------------------------------------------------------*/
 		INFO = tag.readBinary(SFI_EXTRA_LOG);
+		Log.d(TAG, "SFI 4 read: " + INFO.isOkey() + ", size=" + INFO.size());
 		if (!INFO.isOkey())
 			return HINT.GONEXT;
 
@@ -48,19 +60,34 @@ final class BeijingMunicipal extends StandardPboc {
 		// read card operation file, binary (5)
 		/*--------------------------------------------------------------*/
 		CNT = tag.readBinary(SFI_EXTRA_CNT);
-
-		/*--------------------------------------------------------------*/
-		// select Main Application
-		/*--------------------------------------------------------------*/
-		if (!tag.selectByID(DFI_EP).isOkey())
-			return HINT.RESETANDGONEXT;
+		Log.d(TAG, "SFI 5 read: " + CNT.isOkey() + ", size=" + CNT.size());
 
 		BALANCE = tag.getBalance(0, true);
+		Log.d(TAG, "Balance read: " + BALANCE.isOkey() + ", size=" + BALANCE.size());
 
 		/*--------------------------------------------------------------*/
 		// read log file, record (24)
 		/*--------------------------------------------------------------*/
 		ArrayList<byte[]> LOG = readLog24(tag, SFI_LOG);
+		Log.d(TAG, "SFI 24 LOG count: " + LOG.size());
+		
+		// 如果SFI 24读取失败，尝试使用北京一卡通特定的SFI
+		if (LOG.isEmpty()) {
+			Log.d(TAG, "SFI 24 empty, trying SFI 10 for Beijing Municipal");
+			LOG = readLog24(tag, 10); // 北京一卡通可能使用SFI 10
+			Log.d(TAG, "SFI 10 LOG count: " + LOG.size());
+		}
+		
+		for (int i = 0; i < LOG.size(); i++) {
+			byte[] rec = LOG.get(i);
+			Log.d(TAG, "LOG[" + i + "] len=" + rec.length + " data=" + Util.toHexString(rec, 0, Math.min(rec.length, 23)));
+		}
+
+		/*--------------------------------------------------------------*/
+		// read detail file, record (30 / 0x1E) - 北京一卡通可能不支持
+		/*--------------------------------------------------------------*/
+		ArrayList<byte[]> DETAIL = readDetail30(tag, SFI_DETAIL);
+		Log.d(TAG, "SFI 30 DETAIL count: " + DETAIL.size());
 
 		/*--------------------------------------------------------------*/
 		// build result
@@ -71,7 +98,7 @@ final class BeijingMunicipal extends StandardPboc {
 
 		parseInfo4(app, INFO, CNT);
 
-		parseLog24(app, LOG);
+		parseLog24(app, LOG, DETAIL);
 
 		configApplication(app);
 

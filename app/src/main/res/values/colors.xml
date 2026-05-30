@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ============================================ -->
+    <!-- 玻璃拟态深色主题配色 - Glassmorphism Dark Theme -->
+    <!-- ============================================ -->
+
+    <!-- 背景色 -->
+    <color name="bg_dark_start">#1a1a2e</color>
+    <color name="bg_dark_center">#16213e</color>
+    <color name="bg_dark_end">#0f3460</color>
+
+    <!-- 玻璃效果色 -->
+    <color name="glass_white">#1AFFFFFF</color>
+    <color name="glass_white_light">#26FFFFFF</color>
+    <color name="glass_stroke">#33FFFFFF</color>
+    <color name="glass_stroke_bright">#50FFFFFF</color>
+
+    <!-- 发光高亮色 -->
+    <color name="glow_cyan">#00d4ff</color>
+    <color name="glow_cyan_soft">#4000d4ff</color>
+    <color name="glow_cyan_bright">#6000d4ff</color>
+    <color name="glow_magenta">#ff00ff</color>
+
+    <!-- 文字颜色 -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#CCFFFFFF</color>
+    <color name="text_tertiary">#80FFFFFF</color>
+    <color name="text_hint">#60FFFFFF</color>
+
+    <!-- 标签颜色（适配深色主题） -->
+    <color name="tag_bg">#E61a1a2e</color>
+    <color name="tag_tip">#80FFFFFF</color>
+    <color name="tag_spliter">#40FFFFFF</color>
+    <color name="tag_action">#00d4ff</color>
+    <color name="tag_h1">#FFFFFF</color>
+    <color name="tag_h2">#00d4ff</color>
+    <color name="tag_h3">#CCFFFFFF</color>
+    <color name="tag_text">#E6FFFFFF</color>
+    <color name="tag_lab">#FFFFFF</color>
+
+    <!-- 按钮颜色 -->
+    <color name="btn_account">#00d4ff</color>
+    <color name="btn_transaction">#ff00ff</color>
+    <color name="progress_color">#00d4ff</color>
+
+</resources>

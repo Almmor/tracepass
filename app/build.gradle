@@ -1,0 +1,60 @@
+plugins {
+    id 'com.android.application'
+}
+
+android {
+    namespace 'com.almmor.tracepass'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.almmor.tracepass"
+        minSdk 21
+        targetSdk 33
+        versionCode 100
+        versionName "1.0.0"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file("${rootDir}/android-keystore/tracepass.keystore")
+            storePassword "tracepass123"
+            keyAlias "tracepass"
+            keyPassword "tracepass123"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.release
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_21
+        targetCompatibility JavaVersion.VERSION_21
+    }
+
+    lint {
+        abortOnError false
+    }
+
+    // 禁用 assets 压缩以避免路径问题
+    androidResources {
+        noCompress 'csv', 'md'
+    }
+}
+
+// 禁用增量构建以避免文件锁定问题
+tasks.withType(com.android.build.gradle.tasks.MergeResources).configureEach {
+    outputs.upToDateWhen { false }
+}
+
+dependencies {
+    // 不使用 AndroidX，保持原生 API
+}

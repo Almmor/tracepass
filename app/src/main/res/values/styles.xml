@@ -1,0 +1,71 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 玻璃拟态深色主题 -->
+    <style name="AppBaseTheme" parent="@android:style/Theme.Material.NoActionBar" />
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@drawable/bg_gradient_dark</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <!-- 工具栏按钮样式 - 玻璃拟态 -->
+    <style name="toolButton">
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:background">@drawable/bg_glass_button_glow</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <!-- 文本区域样式 -->
+    <style name="textBoard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:fillViewport">true</item>
+        <item name="android:scrollbars">none</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <!-- 文本样式 - 适配深色主题 -->
+    <style name="textArea">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">@dimen/tag_text</item>
+        <item name="android:padding">@dimen/padding_default</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:clickable">false</item>
+        <item name="android:longClickable">false</item>
+        <item name="android:linksClickable">true</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:background">@null</item>
+    </style>
+
+    <!-- 进度条样式 - 玻璃拟态 -->
+    <style name="progressBar">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@color/glass_white</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.5</item>
+        <item name="android:background">@drawable/bg_glass_card</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+</resources>

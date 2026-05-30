@@ -1,0 +1,25 @@
+<resources>
+    <!-- 毛玻璃风格尺寸 -->
+    <dimen name="padding_window">12dp</dimen>
+    <dimen name="padding_default">16dp</dimen>
+    <dimen name="padding_card">20dp</dimen>
+    <dimen name="corner_card">24dp</dimen>
+    <dimen name="corner_button">24dp</dimen>
+    <dimen name="corner_toolbar">16dp</dimen>
+    <dimen name="elevation_glass">0dp</dimen>
+    <dimen name="blur_radius">20dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="button_size">44dp</dimen>
+    <dimen name="app_name_size">36sp</dimen>
+
+    <!-- 原始标签尺寸 -->
+    <dimen name="tag_tip">20sp</dimen>
+    <dimen name="tag_action">16sp</dimen>
+    <dimen name="tag_h1">18sp</dimen>
+    <dimen name="tag_h2">16sp</dimen>
+    <dimen name="tag_h3">14sp</dimen>
+    <dimen name="tag_text">15sp</dimen>
+    <dimen name="tag_lab">15sp</dimen>
+    <dimen name="tag_parag">6dp</dimen>
+    <dimen name="tag_spliter">1dp</dimen>
+</resources>

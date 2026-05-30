@@ -1,0 +1,110 @@
+[
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_tabbar.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_tabbar.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_trans_card.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_trans_card.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/raw-zh-rTW_zip.tab.flat",
+        "source": "com.almmor.tracepass.app-main-6:/raw-zh-rTW/zip.tab"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/layout_progress.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/layout/progress.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_toolbar.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_toolbar.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/xml_nfc_tech_filter.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/xml/nfc_tech_filter.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_gradient_dark.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_gradient_dark.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_trans_detail.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_trans_detail.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_button.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_button.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_button_active.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_button_active.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_window.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/window.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/raw_cardname_tu.csv.flat",
+        "source": "com.almmor.tracepass.app-main-6:/raw/cardname_tu.csv"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/raw-zh-rCN_zip.tab.flat",
+        "source": "com.almmor.tracepass.app-main-6:/raw-zh-rCN/zip.tab"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_ic_settings.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/ic_settings.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_progress.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_progress.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_logo_glow.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_logo_glow.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_card.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_card.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/raw_zip.tab.flat",
+        "source": "com.almmor.tracepass.app-main-6:/raw/zip.tab"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/color_nav_item_color.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/color/nav_item_color.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_nfcard.png.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/nfcard.png"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_bg_glass_button_glow.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/bg_glass_button_glow.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/anim_fade_in.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/anim/fade_in.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_ic_account.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/ic_account.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/anim_fade_out.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/anim/fade_out.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/layout_activity_main.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_ic_card.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/ic_card.xml"
+    },
+    {
+        "merged": "com.almmor.tracepass.app-merged_res-4:/drawable_ic_transaction.xml.flat",
+        "source": "com.almmor.tracepass.app-main-6:/drawable/ic_transaction.xml"
+    }
+]

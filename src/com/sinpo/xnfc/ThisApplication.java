@@ -23,6 +23,7 @@ import com.sinpo.xnfc.R;
 import android.app.Application;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.util.DisplayMetrics;
 import android.widget.Toast;
 
@@ -56,7 +57,7 @@ public final class ThisApplication extends Application implements UncaughtExcept
 	}
 
 	public static void showMessage(int fmt, CharSequence... msgs) {
-		String msg = String.format(getStringResource(fmt), msgs);
+		String msg = String.format(getStringResource(fmt), (Object[]) msgs);
 		Toast.makeText(instance, msg, Toast.LENGTH_LONG).show();
 	}
 
@@ -69,16 +70,26 @@ public final class ThisApplication extends Application implements UncaughtExcept
 		return instance.getResources().getDimensionPixelSize(resId);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static int getColorResource(int resId) {
-		return instance.getResources().getColor(resId);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			return instance.getResources().getColor(resId, null);
+		} else {
+			return instance.getResources().getColor(resId);
+		}
 	}
 
 	public static String getStringResource(int resId) {
 		return instance.getString(resId);
 	}
 
+	@SuppressWarnings("deprecation")
 	public static Drawable getDrawableResource(int resId) {
-		return instance.getResources().getDrawable(resId);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			return instance.getResources().getDrawable(resId, null);
+		} else {
+			return instance.getResources().getDrawable(resId);
+		}
 	}
 
 	public static DisplayMetrics getDisplayMetrics() {

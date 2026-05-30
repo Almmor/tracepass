@@ -24,7 +24,10 @@ import com.sinpo.xnfc.nfc.bean.Application;
 import com.sinpo.xnfc.nfc.bean.Card;
 import com.sinpo.xnfc.nfc.tech.Iso7816;
 
+import android.util.Log;
+
 final class TUnion extends StandardPboc {
+	private static final String TAG = "TUnion";
 
 	@Override
 	protected SPEC.APP getApplicationId() {
@@ -41,12 +44,16 @@ final class TUnion extends StandardPboc {
 	@SuppressWarnings("unchecked")
 	@Override
 	protected HINT readCard(Iso7816.StdTag tag, Card card) throws IOException {
+		Log.d(TAG, "readCard started");
 
 		/*--------------------------------------------------------------*/
 		// select Main Application
 		/*--------------------------------------------------------------*/
-		if (!selectMainApplication(tag))
+		if (!selectMainApplication(tag)) {
+			Log.d(TAG, "selectMainApplication failed");
 			return HINT.GONEXT;
+		}
+		Log.d(TAG, "selectMainApplication success");
 
 		Iso7816.Response INFO, BALANCE, OVER, OVER_LIMIT;
 
@@ -54,6 +61,7 @@ final class TUnion extends StandardPboc {
 		// read card info file, binary (21)
 		/*--------------------------------------------------------------*/
 		INFO = tag.readBinary(SFI_EXTRA);
+		Log.d(TAG, "SFI 21 INFO: " + INFO.isOkey() + ", size=" + INFO.size());
 
 		/*--------------------------------------------------------------*/
 		// read balance
@@ -61,11 +69,19 @@ final class TUnion extends StandardPboc {
 		BALANCE = tag.getBalance(0x03, true);
 		OVER = tag.getBalance(0x02, true);
 		OVER_LIMIT = tag.getBalance(0x01, true);
+		Log.d(TAG, "Balance: " + BALANCE.isOkey() + ", OVER: " + OVER.isOkey() + ", LIMIT: " + OVER_LIMIT.isOkey());
 
 		/*--------------------------------------------------------------*/
 		// read log file, record (24)
 		/*--------------------------------------------------------------*/
 		ArrayList<byte[]> LOG = readLog24(tag, SFI_LOG);
+		Log.d(TAG, "SFI 24 LOG count: " + LOG.size());
+
+		/*--------------------------------------------------------------*/
+		// read detail file, record (30 / 0x1E)
+		/*--------------------------------------------------------------*/
+		ArrayList<byte[]> DETAIL = readDetail30(tag, SFI_DETAIL);
+		Log.d(TAG, "SFI 30 DETAIL count: " + DETAIL.size());
 
 		/*--------------------------------------------------------------*/
 		// build result
@@ -76,12 +92,13 @@ final class TUnion extends StandardPboc {
 
 		parseInfo21(app, INFO, 4, true);
 
-		parseLog24(app, LOG);
+		parseLog24(app, LOG, DETAIL);
 
 		configApplication(app);
 
 		card.addApplication(app);
 
+		Log.d(TAG, "readCard completed");
 		return HINT.STOP;
 	}
 

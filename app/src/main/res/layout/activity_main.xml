@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+玻璃拟态设计 - Glassmorphism UI with Bottom Navigation
+深邃蓝紫渐变背景 + 毛玻璃效果 + 底部导航栏（适配小白条）
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_gradient_dark"
+    android:fitsSystemWindows="true">
+
+    <!-- 左上角：发光 Logo 区域 -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_logo_glow"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <!-- nfcard Logo -->
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/nfcard"
+            android:clickable="true"
+            android:onClick="onSwitch2AboutPage"
+            android:contentDescription="nfcard" />
+
+        <!-- "powered by" 文字 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:text="powered by"
+            android:textColor="#80FFFFFF"
+            android:textSize="10sp" />
+
+        <!-- 应用名称 -->
+        <TextView
+            android:id="@+id/txtAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:text="@string/app_name"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 中间：内容区域 -->
+    <FrameLayout
+        android:id="@+id/contentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topBar"
+        android:layout_above="@+id/bottomNav"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <!-- 默认内容：读卡提示或卡片概览（HTML渲染） -->
+        <ScrollView
+            android:id="@+id/contentScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:background="@drawable/bg_glass_card"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:clipToPadding="false">
+            <TextView
+                android:id="@+id/contentText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:textSize="14sp"
+                android:textColor="#E6FFFFFF"
+                android:lineSpacingExtra="6dp"
+                android:padding="16dp" />
+        </ScrollView>
+
+        <!-- 交易列表：原生可展开卡片 -->
+        <ScrollView
+            android:id="@+id/transScroll"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:clipToPadding="false"
+            android:visibility="gone">
+            <LinearLayout
+                android:id="@+id/transListContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+        </ScrollView>
+    </FrameLayout>
+
+    <!-- 底部：毛玻璃导航栏（paddingBottom 由代码动态设置以适配小白条） -->
+    <LinearLayout
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="72dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_glass_tabbar"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
+
+        <!-- 卡片概述 -->
+        <LinearLayout
+            android:id="@+id/navOverview"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onNavOverview"
+            android:background="@null">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_card"
+                android:tint="@color/nav_item_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="概述"
+                android:textColor="@color/nav_item_color"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- 账户 -->
+        <LinearLayout
+            android:id="@+id/navAccount"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onNavAccount"
+            android:background="@null">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_account"
+                android:tint="@color/nav_item_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="账户"
+                android:textColor="@color/nav_item_color"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- 交易 -->
+        <LinearLayout
+            android:id="@+id/navTransaction"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onNavTransaction"
+            android:background="@null">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_transaction"
+                android:tint="@color/nav_item_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="交易"
+                android:textColor="@color/nav_item_color"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- 设置 -->
+        <LinearLayout
+            android:id="@+id/navSettings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:onClick="onNavSettings"
+            android:background="@null">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:src="@drawable/ic_settings"
+                android:tint="@color/nav_item_color" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="设置"
+                android:textColor="@color/nav_item_color"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

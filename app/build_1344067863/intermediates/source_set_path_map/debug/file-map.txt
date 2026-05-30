@@ -1,0 +1,7 @@
+com.almmor.tracepass.app-pngs-0 C:\Users\almmo\Desktop\nfc\nfcard\app\build\generated\res\pngs\debug
+com.almmor.tracepass.app-resValues-1 C:\Users\almmo\Desktop\nfc\nfcard\app\build\generated\res\resValues\debug
+com.almmor.tracepass.app-mergeDebugResources-2 C:\Users\almmo\Desktop\nfc\nfcard\app\build\intermediates\incremental\debug\mergeDebugResources\merged.dir
+com.almmor.tracepass.app-mergeDebugResources-3 C:\Users\almmo\Desktop\nfc\nfcard\app\build\intermediates\incremental\debug\mergeDebugResources\stripped.dir
+com.almmor.tracepass.app-merged_res-4 C:\Users\almmo\Desktop\nfc\nfcard\app\build\intermediates\merged_res\debug
+com.almmor.tracepass.app-debug-5 C:\Users\almmo\Desktop\nfc\nfcard\app\src\debug\res
+com.almmor.tracepass.app-main-6 C:\Users\almmo\Desktop\nfc\nfcard\app\src\main\res

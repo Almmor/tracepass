@@ -18,11 +18,14 @@ package com.sinpo.xnfc;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.method.LinkMovementMethod;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
@@ -38,6 +41,23 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		// 沉浸式状态栏和导航栏适配（API 21+）
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+			Window window = getWindow();
+			// 透明状态栏
+			window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+			window.setStatusBarColor(0x00000000);
+			// 透明导航栏
+			window.setNavigationBarColor(0x00000000);
+			// 刘海屏适配（API 28+）
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+				WindowManager.LayoutParams params = window.getAttributes();
+				params.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_SHORT_EDGES;
+				window.setAttributes(params);
+			}
+		}
+		
 		setContentView(R.layout.activity_main);
 
 		initViews();

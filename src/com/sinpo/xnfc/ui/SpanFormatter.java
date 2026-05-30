@@ -20,6 +20,7 @@ import java.lang.ref.WeakReference;
 import org.xml.sax.XMLReader;
 
 import android.graphics.Canvas;
+import android.os.Build;
 import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetricsInt;
@@ -54,8 +55,13 @@ public final class SpanFormatter implements Html.TagHandler {
 		this.handler = handler;
 	}
 
+	@SuppressWarnings("deprecation")
 	public CharSequence toSpanned(String html) {
-		return Html.fromHtml(html, null, this);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+			return Html.fromHtml(html, Html.FROM_HTML_MODE_COMPACT, null, this);
+		} else {
+			return Html.fromHtml(html, null, this);
+		}
 	}
 
 	private static final class ActionSpan extends ClickableSpan {

@@ -16,9 +16,6 @@ Additional permission under GNU GPL version 3 section 7 */
 package com.sinpo.xnfc.nfc;
 
 import static android.nfc.NfcAdapter.EXTRA_TAG;
-import static android.os.Build.VERSION_CODES.GINGERBREAD_MR1;
-import static android.os.Build.VERSION_CODES.ICE_CREAM_SANDWICH;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -29,6 +26,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.IsoDep;
 import android.nfc.tech.NfcF;
+import android.os.Build;
 
 import com.sinpo.xnfc.nfc.reader.ReaderListener;
 import com.sinpo.xnfc.nfc.reader.ReaderManager;
@@ -57,9 +55,15 @@ public final class NfcManager {
 	public NfcManager(Activity activity) {
 		this.activity = activity;
 		nfcAdapter = NfcAdapter.getDefaultAdapter(activity);
+		
+		// 修复：API 31+ 需要指定 PendingIntent mutability
+		int flags = PendingIntent.FLAG_UPDATE_CURRENT;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+			flags |= PendingIntent.FLAG_IMMUTABLE;
+		}
 		pendingIntent = PendingIntent.getActivity(activity, 0, new Intent(
 				activity, activity.getClass())
-				.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0);
+				.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), flags);
 
 		setupBeam(true);
 
@@ -67,15 +71,11 @@ public final class NfcManager {
 	}
 
 	public void onPause() {
-		setupOldFashionBeam(false);
-
 		if (nfcAdapter != null)
 			nfcAdapter.disableForegroundDispatch(activity);
 	}
 
 	public void onResume() {
-		setupOldFashionBeam(true);
-
 		if (nfcAdapter != null)
 			nfcAdapter.enableForegroundDispatch(activity, pendingIntent,
 					TAGFILTERS, TECHLISTS);
@@ -93,7 +93,12 @@ public final class NfcManager {
 	}
 
 	public boolean readCard(Intent intent, ReaderListener listener) {
-		final Tag tag = (Tag) intent.getParcelableExtra(EXTRA_TAG);
+		final Tag tag;
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+			tag = (Tag) intent.getParcelableExtra(EXTRA_TAG, Tag.class);
+		} else {
+			tag = (Tag) intent.getParcelableExtra(EXTRA_TAG);
+		}
 		if (tag != null) {
 			ReaderManager.readCard(tag, listener);
 			return true;
@@ -105,28 +110,17 @@ public final class NfcManager {
 		return (nfcAdapter == null) ? -1 : nfcAdapter.isEnabled() ? 1 : 0;
 	}
 
-	@SuppressLint("NewApi")
-	private void setupBeam(boolean enable) {
-
-		final int api = android.os.Build.VERSION.SDK_INT;
-		if (nfcAdapter != null && api >= ICE_CREAM_SANDWICH) {
-			if (enable)
-				nfcAdapter.setNdefPushMessage(createNdefMessage(), activity);
-		}
-	}
-
 	@SuppressWarnings("deprecation")
-	private void setupOldFashionBeam(boolean enable) {
-
-		final int api = android.os.Build.VERSION.SDK_INT;
-		if (nfcAdapter != null && api >= GINGERBREAD_MR1
-				&& api < ICE_CREAM_SANDWICH) {
-
-			if (enable)
-				nfcAdapter.enableForegroundNdefPush(activity,
-						createNdefMessage());
-			else
-				nfcAdapter.disableForegroundNdefPush(activity);
+	private void setupBeam(boolean enable) {
+		// setNdefPushMessage 在 API 33+ 已废弃，使用反射避免编译错误
+		if (nfcAdapter != null && enable) {
+			try {
+				nfcAdapter.getClass().getMethod("setNdefPushMessage",
+						NdefMessage.class, Activity.class)
+						.invoke(nfcAdapter, createNdefMessage(), activity);
+			} catch (Exception e) {
+				// API 33+ 已移除此方法，忽略
+			}
 		}
 	}
 

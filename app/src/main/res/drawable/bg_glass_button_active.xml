@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 选中状态的发光按钮 -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 青色外发光 -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#4000d4ff" />
+            <size
+                android:width="56dp"
+                android:height="56dp" />
+        </shape>
+    </item>
+    <!-- 强发光层 -->
+    <item
+        android:left="1dp"
+        android:top="1dp"
+        android:right="1dp"
+        android:bottom="1dp">
+        <shape android:shape="oval">
+            <solid android:color="#6000d4ff" />
+        </shape>
+    </item>
+    <!-- 玻璃主体 -->
+    <item
+        android:left="3dp"
+        android:top="3dp"
+        android:right="3dp"
+        android:bottom="3dp">
+        <shape android:shape="oval">
+            <gradient
+                android:type="radial"
+                android:gradientRadius="50%"
+                android:centerX="0.3"
+                android:centerY="0.3"
+                android:startColor="#80FFFFFF"
+                android:endColor="#4000d4ff" />
+            <stroke
+                android:width="2dp"
+                android:color="#00d4ff" />
+        </shape>
+    </item>
+</layer-list>
