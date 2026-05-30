@@ -1,0 +1,26 @@
+# --- Android/Gradle ---
+.gradle/
+app/build/
+app/release/*.apk
+local.properties
+*.iml
+*.log
+
+# --- IDE ---
+.idea/
+*.swp
+*.swo
+
+# --- Binaries & Archives ---
+gradle-8.5/
+jdk-17/
+jdk-21/
+*.zip
+
+# --- Secrets ---
+android-keystore/
+
+# --- Assets ---
+*.png
+!logo.png
+!tracepass.png
